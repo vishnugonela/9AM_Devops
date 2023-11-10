@@ -6,5 +6,11 @@ pipeline{
         sh 'echo "This is stage1"'
       }
     }
+
+    stage('stage2'){
+      steps{
+        sh ' bash ${WORKSPACE}/file1.sh'
+      }
+    }
   }
 }
