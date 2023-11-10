@@ -1,12 +1,9 @@
 #!/bin/bash/
 
-read name 
 
-echo "Enter name"
-
-if [ $name = Meghana ]
+if [ $name = "Meghana" ]
 then 
-	echo "sucessful"
+	echo "sucessful, Welcome $name"
 else
-	echo "failure"
+	echo "failure, Wrong Username"
 fi
