@@ -10,6 +10,8 @@ pipeline {
                     echo "Master Node Description: ${masterNode.nodeDescription}"
                     
                 }
+            }
+        }
             stage('exceptional handling') {
                 steps {
                     script{
@@ -25,6 +27,7 @@ pipeline {
                         
                         // You can also mark the build as unstable or fail the build
                         currentBuild.result = 'FAILURE'
+                    }
                     }
             }
         }
