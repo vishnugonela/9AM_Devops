@@ -16,16 +16,11 @@ pipeline {
                 steps {
                     script{
                         try {
-                        // Code that may throw an exception
                         sh 'command_that_might_fail'
-                        
-                        // Additional steps
                         echo 'Success'
                     } catch (Exception e) {
-                        // Handle the exception
-                        echo "An error occurred: ${e.getMessage()}"
                         
-                        // You can also mark the build as unstable or fail the build
+                        echo "An error occurred: ${e.getMessage()}"
                         currentBuild.result = 'FAILURE'
                     }
                     }
