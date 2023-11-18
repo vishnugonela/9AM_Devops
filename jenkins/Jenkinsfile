@@ -8,7 +8,7 @@ stages{
   }
    stage('test'){
     steps{
-      sh 'echo "test from GitHub running on a 'hostname'"'
+      sh 'echo " Build from GitHub running on  'hostname'"'
     }
    }
 }
