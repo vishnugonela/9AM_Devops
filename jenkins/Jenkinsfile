@@ -6,6 +6,9 @@ stages{
       sh 'echo "Build from GitHub"'
     }
   }
+   stage('test'){
+    steps{
+      sh 'echo "test from GitHub running on a 'hostname'"'
 }
 }
 
