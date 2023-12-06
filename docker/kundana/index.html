@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Details</title>
+</head>
+<body>
+    <h1>Container Details</h1>
+    <p>Container Name: <span id="containerName"></span></p>
+    <p>Container IP: <span id="containerIP"></span></p>
+    <p>Date: <span id="currentDate"></span></p>
+
+    <script>
+        document.getElementById('containerName').textContent = location.hostname;
+        document.getElementById('containerIP').textContent = location.host;
+        document.getElementById('currentDate').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
+
