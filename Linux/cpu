@@ -1,0 +1,15 @@
+There are several ways to limit CPU usage for a particular user in Linux:
+
+cpulimit: This tool allows you to control the CPU usage of a process by PID, process name, or absolute location, and set its processor usage in terms of percentage of total1. Here is an example of how to use it:
+cpulimit --exe /usr/local/bin/bigloop --limit 40
+
+ulimit: You can use the ulimit command to see what resource limits are in effect and also change them2. For example, to set the CPU time limit to 100 seconds, you can use:
+ulimit -t 100
+
+systemd: If your Linux distribution is running systemd with unified hierarchy cgroups, you can use the systemd-run command to run a given user mode process with specific limits3. Here is an example:
+systemd-run --user --pipe -p MemoryMax=42M -p CPUWeight=10 [command-to-run...]
+
+/etc/security/limits.conf: You can set process related limits in this file4. For example, to set the priority of all processes of a user to 19 (lowest), you can add the following entry:
+username - priority 19
+
+Please replace username with the actual username. Remember, you need root privileges to make these changes.
