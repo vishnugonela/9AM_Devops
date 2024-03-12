@@ -1,0 +1,22 @@
+ pipeline {
+    agent any
+
+    stages {
+        stage('Find Server Details') {
+            steps {
+                script {
+                    def master = Jenkins.getInstance()
+                    echo "Master Node Details:"
+                    echo "Node Name: ${master.nodeName}"
+                    echo "Node Description: ${master.nodeDescription}"
+                    echo "Node NumExecutors: ${master.numExecutors}"
+                    echo "Node Mode: ${master.mode}"
+                    echo "Node Root Directory: ${master.rootPath}"
+                    echo "Node Workspace Root Directory: ${master.workspaceRoot}"
+                    echo "Node Labels: ${master.getLabelString()}"
+
+                  }
+                }
+              }
+            }
+         }
