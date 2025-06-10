@@ -1,4 +1,4 @@
 #!/bin/bash
 #
 
-echo "Hello World updated from GITHUB"
+echo "Hello World updated from GITHUB."
