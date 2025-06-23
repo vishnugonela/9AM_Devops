@@ -1,4 +1,4 @@
 #!/bin/bash
 #
 
-echo "Hello World updated from git"
+echo "Hello World updated from github for Jenkins integration"
