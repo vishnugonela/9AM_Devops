@@ -7,7 +7,7 @@ fi
 
 echo " "
 echo "===================================================="
-echo "Top Running Process Details based of CPU Utilization"
+echo "Top Running Process Details based of CPU Utilization "
 echo "====================================================="
 echo " "
 
