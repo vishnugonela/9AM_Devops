@@ -1,0 +1,40 @@
+pipeline
+{
+    agent any
+
+    stages 
+    {
+        stage('User Input and Validation')
+        {
+            steps 
+            {
+
+                sh '''
+                    #!/bin/bash
+                    
+                    
+                    read -p "Enter username: " user
+                    read -s -p "Enter password: " pass
+
+
+                 
+                    if [[ -z "$user" || ! "$user" =~ ^[a-zA-Z]+$ ]]
+                    then
+                        echo "Invalid username. It must be non-empty and contain only letters and numbers."
+                        exit 1
+                    fi
+
+                    
+                    
+                    if [[ "$pass" =~ [A-Z] ]] && [[ "$pass" =~ [a-z] ]] && [[ "$pass" =~ [0-9] ]]
+                    then
+                        echo "password is strong"
+                    else
+                        echo "Weak password, must contain upper, lower, and numeric characters."
+                        exit 1
+                    fi
+                '''
+            }
+        }
+    }
+}
