@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                   echo "Build stage running sucessfully"
+                   echo "Build stage running sucessfully from node `hostname`"
                 '''
             }
         }
