@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+               echo "===== SERVER DETAILS ====="
+                sh 'echo Hostname = $(hostname)'
+                sh 'echo IP Address = $(hostname -I)'
+                sh 'echo OS = $(uname -o)'
+                sh 'echo Kernal Version = $(uname -r)'
+                sh 'echo Number of CPU = $(nproc)'
+                sh 'echo Disk Usage = $(df -h --total | grep total)'
+                sh 'echo Uptime = $(uptime -p)'
+                
+            }
+        }
+    }
+}
+
