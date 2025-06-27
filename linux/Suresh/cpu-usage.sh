@@ -14,4 +14,4 @@ echo " "
 ps -eo pid,ppid,user,comm,%cpu,%mem --sort=-%cpu | head -n 10
 
 echo " "
-echo " ==============End============="
+echo " ==============End of the results============="
