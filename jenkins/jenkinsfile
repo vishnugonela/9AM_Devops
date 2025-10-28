@@ -16,7 +16,7 @@ pipeline {
       steps {
         sh '''
           echo "Executing the script.sh"
-          bash ${WORKSPACE}/linnux/script.sh
+          bash ${WORKSPACE}/linux/script.sh
           echo "Test stage is testing"
         '''
       }
