@@ -5,6 +5,8 @@ pipeline {
     stage('Build Stage') {
       steps {
         sh '''
+          echo "Listing workspace Contents:"
+          ls -l ${WORKSPACE}
           echo "Build stage is building"
         '''
       }
