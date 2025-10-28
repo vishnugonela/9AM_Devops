@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Build Stage') {
+      steps {
+        sh '''
+          echo "Listing workspace Contents:"
+          ls -l ${WORKSPACE}
+          echo "Build stage is building!!!!"
+        '''
+      }
+    }
+
+    stage('Test Stage') {
+      steps {
+        sh '''
+          echo "Executing the script.sh"
+          bash ${WORKSPACE}/linux/script.sh
+          echo "Test stage is testing"
+        '''
+      }
+    }
+  }
+}
