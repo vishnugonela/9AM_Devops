@@ -2,5 +2,5 @@
 
 for i in {1..10}
 do
-  echo "Hello Vishnu in loop $i"
+  echo "Hello Sumant in loop $i"
 done
