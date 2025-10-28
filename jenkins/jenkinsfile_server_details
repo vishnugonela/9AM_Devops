@@ -1,0 +1,14 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Server Details') {
+      steps {
+        sh '''
+          echo "Executing the server_details.sh"
+          bash ${WORKSPACE}/linux/server_details.sh
+        '''
+      }
+    }
+  }
+}
