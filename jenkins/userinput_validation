@@ -4,10 +4,8 @@ pipeline {
   stages {
     stage('UserInput Validation') {
       steps {
-        sh '''
-          echo "Executing the userinput_validation.sh"
-          bash ${WORKSPACE}/linux/userinput_validate.sh
-        '''
+         sh "echo 'Executing the userinput_validation.sh'"
+         sh "bash ${WORKSPACE}/linux/userinput_validate.sh"
       }
     }
   }
