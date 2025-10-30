@@ -5,6 +5,7 @@ stages{
     steps{
         sh '''
         echo "my Server details are:-"
+        bash ${WORKSPACE}/linux/test1.sh
         
         '''
     }
