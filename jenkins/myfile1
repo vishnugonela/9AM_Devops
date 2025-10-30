@@ -15,6 +15,7 @@ pipeline{
                 echo "test stage was succesfully running"
                 '''
             }
+}
          stage('Deploy Stage'){
             steps{
                 sh '''
