@@ -4,6 +4,7 @@ pipeline{
         stage('build stage'){
             steps{
                 sh '''
+                    echo "starting my build part"
                     echo "Mybuild stage running succesfully"
                 '''
             }
@@ -13,13 +14,6 @@ pipeline{
             steps{
                 sh '''
                 echo "test stage was succesfully running"
-                '''
-            }
-}
-         stage('Deploy Stage'){
-            steps{
-                sh '''
-                echo "Deployed stage was succesfully running"
                 '''
             }
         }
