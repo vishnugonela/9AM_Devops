@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Run Backup Script') {
+            steps {
+                echo 'Starting Jenkins backup...'
+                sh '''
+                chmod +x jenkins_backup.sh
+                ./jenkins_backup.sh
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Backup completed successfully!'
+        }
+        failure {
+            echo '❌ Backup failed. Check logs.'
+        }
+    }
+}
+
