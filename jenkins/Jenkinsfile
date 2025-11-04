@@ -1,9 +1,10 @@
 pipeline{
-  agent {
-    label 'Node2'
-  }
+  agent any
   stages{
     stage('build'){
+      agent {
+          label 'Node1'
+       }
       steps{
         sh '''
             echo "Lisiting WORKSPACE contents:"
@@ -14,6 +15,9 @@ pipeline{
     }
 
     stage('deploy'){
+      agent {
+        label 'Node2'
+      }
       steps{
         sh '''
             echo "Executing the script.sh ..............."
