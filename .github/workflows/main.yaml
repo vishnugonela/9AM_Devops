@@ -31,12 +31,12 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Runs a multi-line script
-        run: 
+        run:  
           echo Add other actions to build,
           echo test, and deploy your project.
-test: 
-  runs-on: ubuntu-latest
-  steps:
-  - name: Running shell stage
-    run:
-        echo "Running Tests steps"
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running shell stage
+        run:
+            echo "Running Tests steps"
