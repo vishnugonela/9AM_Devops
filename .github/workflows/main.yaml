@@ -28,3 +28,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+test: 
+  runes-on: ubuntu-latest
+  steps:
+  - name: Running shell stage
+    run:
+        echo "Running Tests steps"
