@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Identify Node') {
+            steps {
+                script {
+                    echo "Running on node: ${env.NODE_MASTER}"
+                    echo "Node label(s): ${env.NODE_LABELS}"
+                    echo "Workspace: ${env.WORKSPACE}"
+                    echo "Executor number: ${env.EXECUTOR_NUMBER}"
+
+                    // Additional system info
+                    def osName = sh(script: "uname -a", returnStdout: true).trim()
+                    echo "Operating System: ${osName}"
+
+                    // Check if running on master
+                    if (env.NODE_NAME == 'master') {
+                        echo "This job is running on the Jenkins master node."
+                    } else {
+                        echo "This job is running on a Jenkins agent node."
+                    }
+                }
+            }
+        }
+    }
+}
