@@ -1,0 +1,29 @@
+pipeline {
+   agent none
+    stages {
+        stage('Master Info') {
+             agent { label 'Master' }
+            steps {
+                sh '''#!/bin/bash
+                    hostname 
+                    hostname -I
+                    uname -a 
+                    cat /etc/os-release
+                    uptime'''
+            }
+        }
+            stage('Node Info') {
+             agent { label 'jenkins_ec2_nodes' }
+            steps {
+               
+                 sh '''#!/bin/bash
+                        hostname 
+                        hostname -I
+                        uname -a 
+                        cat /etc/os-release
+                        uptime'''
+            }
+        }
+    }
+    
+}
