@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Stage 1 - May Fail') {
+            steps {
+                script {
+                
+                    try {
+                        echo "Running Stage 1..."
+                        
+                        sh 'exit 1' //throw error
+                        echo "This line won’t run if command fails"
+                    } catch (err) {
+                        echo "Stage 1 failed, but continuing to next stage."
+                        echo "Error: ${err}"
+                    }
+                }
+            }
+        }
+
+        stage('Stage 2 - Continue Execution') {
+            steps {
+                echo "Stage 2 executed successfully, even after Stage 1 failure."
+            }
+        }
+    }
+}
