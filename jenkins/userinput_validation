@@ -1,12 +1,26 @@
+def firstname
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('UserInput Validation') {
-      steps {
-         sh "echo 'Executing the userinput_validation.sh'"
-         sh "bash \"${WORKSPACE}/linux/userinput_validate.sh\""
-      }
+    stages {
+        stage('input') {
+            steps {
+                script{
+                firstname=input (message: 'click submit to proceed', ok: 'Submit', parameters: [string(defaultValue: 'Sumant', description: 'FIRST NAME', name: 'FIRSTNAME', trim: true)])
+                }
+            }
+        }
+        stage('execute'){
+            agent any
+            steps{
+                script{
+                    echo "Hello ,$firstname" 
+                }
+               sh '''
+                hostname
+                uname -a
+                ''' 
+            }
+        }
     }
-  }
 }
