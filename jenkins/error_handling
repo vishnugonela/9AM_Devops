@@ -8,17 +8,16 @@ pipeline {
                     try {
                         echo "Starting the pipeline execution..."
 
-                        // Simulate a command that can fail
                         sh 'exit 1'   // this will throw an error
 
                         echo "This line will not execute if error occurs above."
                     } 
                     catch (err) {
-                        echo "❌ ERROR: Something went wrong!"
+                        echo "ERROR: Something went wrong!"
                         echo "Error details: ${err}"
                     } 
                     finally {
-                        echo "✅ This block always runs — success or failure."
+                        echo "This block always runs — success or failure."
                     }
                 }
             }
