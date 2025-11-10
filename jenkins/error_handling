@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Example: Error Handling') {
+            steps {
+                script {
+                    try {
+                        echo "Starting the pipeline execution..."
+
+                        // Simulate a command that can fail
+                        sh 'exit 1'   // this will throw an error
+
+                        echo "This line will not execute if error occurs above."
+                    } 
+                    catch (err) {
+                        echo "❌ ERROR: Something went wrong!"
+                        echo "Error details: ${err}"
+                    } 
+                    finally {
+                        echo "✅ This block always runs — success or failure."
+                    }
+                }
+            }
+        }
+
+        stage('Continue Execution') {
+            steps {
+                echo "Pipeline continues even after the error was handled."
+            }
+        }
+    }
+}
