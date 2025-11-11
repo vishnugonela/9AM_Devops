@@ -1,0 +1,5 @@
+FROM nginx:latest
+COPY entrypoint.sh /entrypoint.sh # Copy our script into the container
+RUN chmod +x /entrypoint.sh
+EXPOSE 80
+ENTRYPOINT ["/entrypoint.sh"]
