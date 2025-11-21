@@ -1,0 +1,56 @@
+pipeline{
+  agent any
+
+  stages{
+    stage('Image_build'){
+      steps {
+      sh '''
+        echo "Docker image building "
+        cd ${WORKSPACE}/docker/pythonapp
+
+        docker image build -t pythonapp:latest . 
+        
+      ''''
+      }
+    }
+
+    stage('image_tagging'){
+      steps {
+        sh '''
+          echo "Image taggging ..."
+          docker image tag pythonapp:latest vishnugonela/pythonapp:latest
+
+          '''
+      }
+    }
+
+    stage('docker_hub_push'){
+      steps {
+        sh '''
+          echo "Image pushing to repo"
+
+          docker login -u vishnugonela -p vishnu@15873
+
+          docker image push vishnugonela/pythonapp:latest
+
+        '''
+      }
+    }
+
+    stage('app_deployment'){
+      steps {
+        sh '''
+          echo "Docker App deployment"
+
+          docker container run -d --name container1 -p 8080:80 vishnugonela/pythonapp:latest
+
+          echo "Validating Container app"
+          sleep 30
+          docker container ls | grep container1
+
+        '''
+      }
+    }
+  }
+  
+}
