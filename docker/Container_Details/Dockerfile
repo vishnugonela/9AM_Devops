@@ -1,13 +1,14 @@
-
-# Use the official Nginx image as the base
+#######################################################
+# Name of the file                 : Dockerfile
+# Objective                        : Create image of the bashscript displaying container details 
+# Author of the script             : Anshu
+# Date of creation                 : 29-11-2025
+#######################################################
 FROM nginx:alpine
-
-# Create a custom HTML file with the message
-RUN echo '<!DOCTYPE html><html><head><title>Hello</title></head><body><h1>hello docker from &lt;Anshu&gt;</h1></body></html>' \
-    > /usr/share/nginx/html/index.html
-
-# Expose port 80
+COPY --chmod=755 index.sh /index.sh
 EXPOSE 80
+###--Script is executed before niginx file is executed ############
 
-# Start Nginx in the foreground
+ENTRYPOINT ["sh", "/index.sh"]
+CMD ["nginx", "-g", "daemon off;"]
 CMD ["nginx", "-g", "daemon off;"]
