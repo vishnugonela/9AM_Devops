@@ -1,1 +1,13 @@
 
+# Use the official Nginx image as the base
+FROM nginx:alpine
+
+# Create a custom HTML file with the message
+RUN echo '<!DOCTYPE html><html><head><title>Hello</title></head><body><h1>hello docker from &lt;Anshu&gt;</h1></body></html>' \
+    > /usr/share/nginx/html/index.html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx in the foreground
+CMD ["nginx", "-g", "daemon off;"]
