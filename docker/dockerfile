@@ -1,18 +1,19 @@
-# Use Python official image
-FROM python:3.9-slim
+FROM ubuntu:22.04
 
-# Set working directory
-WORKDIR /app
+# Install OpenSSH server
+RUN apt update && \
+    apt install -y openssh-server && \
+    mkdir /var/run/sshd
 
-# Copy requirement file and install packages
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Set root password (change "root123" to your password)
+RUN echo "root:root123" | chpasswd
 
-# Copy app code
-COPY app.py .
+# Allow root login & password authentication
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
-# Expose port
-EXPOSE 5000
+# Expose SSH port
+EXPOSE 22
 
-# Run the app
-CMD ["python", "app.py"]
+# Start SSH service
+CMD ["/usr/sbin/sshd", "-D"]
